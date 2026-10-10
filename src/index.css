@@ -2,14 +2,14 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-paper: #f1f3f5;
-  --color-paper-raised: #ffffff;
-  --color-ink: #1d2b3a;
-  --color-ink-soft: #4a5a6b;
-  --color-line: #c7cdd3;
-  --color-line-soft: #dde1e5;
+  --color-paper: var(--color-paper-val);
+  --color-paper-raised: var(--color-paper-raised-val);
+  --color-ink: var(--color-ink-val);
+  --color-ink-soft: var(--color-ink-soft-val);
+  --color-line: var(--color-line-val);
+  --color-line-soft: var(--color-line-soft-val);
   --color-amber: #e8a23d;
-  --color-amber-soft: #fcedd8;
+  --color-amber-soft: var(--color-amber-soft-val);
   --color-teal: #2f9e8f;
   --color-violet: #7c6fd6;
   --color-danger: #c1503c;
@@ -17,6 +17,26 @@
   --font-display: 'Space Grotesk', sans-serif;
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
+}
+
+:root, html.dark {
+  --color-paper-val: #0f172a;
+  --color-paper-raised-val: #1e293b;
+  --color-ink-val: #f8fafc;
+  --color-ink-soft-val: #94a3b8;
+  --color-line-val: #334155;
+  --color-line-soft-val: #1e293b;
+  --color-amber-soft-val: #3b2d18;
+}
+
+html.light {
+  --color-paper-val: #f1f3f5;
+  --color-paper-raised-val: #ffffff;
+  --color-ink-val: #1d2b3a;
+  --color-ink-soft-val: #4a5a6b;
+  --color-line-val: #c7cdd3;
+  --color-line-soft-val: #dde1e5;
+  --color-amber-soft-val: #fcedd8;
 }
 
 html,
@@ -37,8 +57,6 @@ body,
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Phone-first layout, centered and framed on wider viewports (tablet/desktop)
-   instead of stretching full width. */
 .app-shell {
   max-width: 480px;
   margin: 0 auto;
@@ -54,7 +72,7 @@ body,
   }
 }
 
-/* Safe-area support for notched phones (iPhone home indicator, Android gesture bar) */
+/* Safe-area support for notched phones */
 .safe-top {
   padding-top: max(14px, env(safe-area-inset-top));
 }
@@ -83,5 +101,30 @@ body,
 }
 
 .input:focus {
-  border-color: var(--color-ink);
+  border-color: var(--color-amber);
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-card-modal,
+  .printable-card-modal * {
+    visibility: visible;
+  }
+  .printable-card-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+

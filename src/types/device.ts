@@ -25,4 +25,13 @@ export interface MatchResult {
   originalDrawing: Device[];
   fullTemper: Device[];
   baseModel: Device[];
+  toleranceMatches?: { device: Device; diffMm: number }[];
 }
+
+export type ThemeMode = 'dark' | 'light';
+
+export interface AppSettings {
+  theme: ThemeMode;
+  toleranceMm: number;
+}
+
