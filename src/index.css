@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-paper: #f1f3f5;
+  --color-paper-raised: #ffffff;
+  --color-ink: #1d2b3a;
+  --color-ink-soft: #4a5a6b;
+  --color-line: #c7cdd3;
+  --color-line-soft: #dde1e5;
+  --color-amber: #e8a23d;
+  --color-amber-soft: #fcedd8;
+  --color-teal: #2f9e8f;
+  --color-violet: #7c6fd6;
+  --color-danger: #c1503c;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Phone-first layout, centered and framed on wider viewports (tablet/desktop)
+   instead of stretching full width. */
+.app-shell {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--color-paper);
+  position: relative;
+}
+
+@media (min-width: 481px) {
+  .app-shell {
+    box-shadow: 0 0 0 1px var(--color-line);
+  }
+}
+
+/* Safe-area support for notched phones (iPhone home indicator, Android gesture bar) */
+.safe-top {
+  padding-top: max(14px, env(safe-area-inset-top));
+}
+
+.safe-bottom-tabbar {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+.tabbar-shell {
+  max-width: 480px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 11px;
+  border: 1px solid var(--color-line);
+  border-radius: 7px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--color-ink);
+}
